@@ -1,0 +1,54 @@
+@startuml fitness
+
+hide circle
+left to right direction
+
+
+entity User{
+    *Id
+    ---
+    *Name
+    *PhoneNumber
+    *WorkoutId <<FK>>
+    *TrainerId <<FK>>
+    *Membership <<FK>>
+}
+
+entity Workout{
+    *Id
+    ---
+    *Date
+    *NumOfExercises
+    *WorkoutDuration
+    *ExercisesId <<FK>>
+    *Description
+}
+
+entity Exercises{
+    *Id
+    ---
+    *Name
+    *MuscleGroup
+    *Sets
+    *Repetitions
+    *Description
+}
+
+entity Trainer{
+    *Id
+    ---
+    *Name
+    *PhoneNumber
+    *Descritpion
+}
+
+entity Membership{
+    *Id
+    ---
+    *DateOfPurchase
+    *DateOfExpiry
+    *Price
+}
+
+
+@enduml
