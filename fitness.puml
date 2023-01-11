@@ -9,15 +9,13 @@ entity User{
     ---
     *Name
     *PhoneNumber
-    *WorkoutId <<FK>>
     *TrainerId <<FK>>
-    *MembershipId <<FK>>
+    *Membership <<FK>>
 }
 
 entity Workout{
     *Id
     ---
-    *Date
     *NumOfExercises
     *WorkoutDuration
     *ExercisesId <<FK>>
@@ -39,16 +37,30 @@ entity Trainer{
     ---
     *Name
     *PhoneNumber
-    *Descritpion
+    *Description
 }
 
 entity Membership{
-    *Id
+    *UserId <<FK>>
     ---
     *DateOfPurchase
     *DateOfExpiry
     *Price
 }
 
+entity UserWorkout{
+    UserId <<FK>>
+    WorkoutId <<FK>>
+    ---
+    *Date
+}
+
+
+Workout||---o{UserWorkout
+User ||---o{ UserWorkout
+Exercises ||---o{ Workout
+Trainer ||---o{ User
+Membership ||---|| User
 
 @enduml
+Footer
