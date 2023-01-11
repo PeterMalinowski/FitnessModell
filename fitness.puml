@@ -11,7 +11,7 @@ entity User{
     *PhoneNumber
     *WorkoutId <<FK>>
     *TrainerId <<FK>>
-    *Membership <<FK>>
+    *MembershipId <<FK>>
 }
 
 entity Workout{
