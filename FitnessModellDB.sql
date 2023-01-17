@@ -7,44 +7,44 @@ DROP TABLE IF EXISTS 	UserWorkout;
 
 CREATE TABLE [User] (
 	Id 		  		INTEGER 		IDENTITY(1,1) PRIMARY KEY,	-- auto increment
-	Name 	  		VARCHAR(255)  	NOT NULL,
-	PhoneNumber		VARCHAR(16) 	NOT NULL,
-	TrainerId		INTEGER			NOT NULL,
-	MembershipId	INTEGER 		NOT NULL,
+	Name 	  		VARCHAR(255)  	NOT NULL UNIQUE,
+	PhoneNumber		VARCHAR(16) 	NOT NULL UNIQUE,
+	TrainerId		INTEGER			NOT NULL UNIQUE,
+	MembershipId	INTEGER 		NOT NULL UNIQUE,
 	FOREIGN KEY (TrainerId) 		REFERENCES Trainer(Id),
 	FOREIGN KEY (MembershipId) 		REFERENCES Membership(Id)
 );
 
 CREATE TABLE Workout (
 	Id 		  			INTEGER 		IDENTITY(1,1) PRIMARY KEY,	-- auto increment
-	NumOfExercises		INTEGER			NOT NULL,
-	WorkoutDuration		VARCHAR(10)		NOT NULL,
-	ExercisesId			INTEGER			NOT NULL,
+	NumOfExercises		INTEGER			NOT NULL UNIQUE,
+	WorkoutDuration		VARCHAR(10)		NOT NULL UNIQUE,
+	ExercisesId			INTEGER			NOT NULL UNIQUE,
 	Description			VARCHAR(255),
 	FOREIGN KEY (ExercisesId) 			REFERENCES Exercises(Id)
 );
 
 CREATE TABLE Exercises (
 	Id 		  		INTEGER 		IDENTITY(1,1) PRIMARY KEY,	-- auto increment
-	Name			VARCHAR(255) 	NOT NULL,
-	MuscleGroup		VARCHAR(255) 	NOT NULL,
-	[Sets]			INTEGER			NOT NULL,
-	Repetitions 	INTEGER  		NOT NULL,
+	Name			VARCHAR(255) 	NOT NULL UNIQUE,
+	MuscleGroup		VARCHAR(255) 	NOT NULL UNIQUE,
+	[Sets]			INTEGER			NOT NULL UNIQUE,
+	Repetitions 	INTEGER  		NOT NULL UNIQUE,
 	Description		VARCHAR(255)
 );
 
 CREATE TABLE Trainer (
 	Id 		  		INTEGER 		IDENTITY(1,1) PRIMARY KEY,	-- auto increment
-	Name	  		VARCHAR(255)  	NOT NULL,
-	PhoneNumber		VARCHAR(16) 	NOT NULL,
-	Description		VARCHAR(255)  	NOT NULL
+	Name	  		VARCHAR(255)  	NOT NULL UNIQUE,
+	PhoneNumber		VARCHAR(16) 	NOT NULL UNIQUE,
+	Description		VARCHAR(255)  	NOT NULL UNIQUE
 );
 
 CREATE TABLE Membership(
 	Id   			INTEGER  	IDENTITY(1,1) PRIMARY KEY,
-	DateOfPurchase  DATE 		NOT NULL,
-	DateOfExpiry	DATE		NOT NULL,
-	Price  			FLOAT 		NOT NULL
+	DateOfPurchase  DATE 		NOT NULL UNIQUE,
+	DateOfExpiry	DATE		NOT NULL UNIQUE,
+	Price  			FLOAT 		NOT NULL UNIQUE
 );
 
 CREATE TABLE UserWorkout(
