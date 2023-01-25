@@ -5,9 +5,8 @@ Peter Malinowski: mal22039@spengergasse.at
 Kenan Basagic: bas22185@spengergasse.at
 | Name | Klasse | Email |
 |------|--------|-------|
-| Peter Malinowski | 3BHIF | petermalinowski26@gmail.com |
-
-
+| Peter Malinowski | 3BHIF | mal22039@spengergasse.at |
+| Kenan Basagic | 3BHIF | bas22185@spengergasse.at |
 
 Tabbles:
 User:
