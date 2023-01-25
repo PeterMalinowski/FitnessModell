@@ -3,6 +3,10 @@ Eine Datenbank für unser PRE-Projekt über Fitness
 
 Peter Malinowski: mal22039@spengergasse.at
 Kenan Basagic: bas22185@spengergasse.at
+| Name | Klasse | Email |
+|------|--------|-------|
+| Peter Malinowski | 3BHIF | petermalinowski26@gmail.com |
+
 
 
 Tabbles:
