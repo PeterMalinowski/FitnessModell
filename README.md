@@ -8,18 +8,5 @@ Kenan Basagic: bas22185@spengergasse.at
 | Peter Malinowski | 3BHIF | mal22039@spengergasse.at |
 | Kenan Basagic | 3BHIF | bas22185@spengergasse.at |
 
-Tabbles:
-User:
-    Id, Name, PhoneNumber, Workout, Trainer, Membership 
 
-Workout:
-    Id, Date, NumOfExercises, WorkoutDuration, Exercises, Description
-
-Exercises:
-    Id, Name, MuscleGroup, Sets, Repetitions, Description
-
-Trainer:
-    Id, Name, PhoneNumber, Descritpion
-
-Membership:
-  Id, DateOfPurchase, DateOfExpiry, Price
+![image](https://user-images.githubusercontent.com/113600069/214533913-5bdcb782-533a-4021-8305-962779555ca3.png)
