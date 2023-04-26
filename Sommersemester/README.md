@@ -10,8 +10,8 @@
 
 ## Thema des Datenmodelles
 
-Wir führen unseren Projekt vom Winter Semesterweiter. Es geht um einen Fitnessmodell.
-Mit Trainingspläne, Übungen, Trainer usw.
+Wir führen unseren Projekt vom Winter Semester weiter. Es geht um ein Fitnessmodell.
+Mit Trainingsplänen, Übungen, Trainer usw.
 
 ## ER Modell (gerendert)
 
