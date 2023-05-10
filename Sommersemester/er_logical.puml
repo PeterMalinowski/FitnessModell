@@ -1,0 +1,106 @@
+@startuml er_logical
+
+!define TABLE_BORDER_STYLE solid
+!define TABLE_ROW_PADDING 5
+!define ENTITY_PADDING 20
+
+!define PK_COLOR Orange
+!define FK_COLOR Blue
+
+!define CARDINALITY_ONE "*"
+!define CARDINALITY_MANY "**"
+
+!define NULL_OPTIONAL "[0..1]"
+!define NOT_NULL_REQUIRED "[1]"
+
+!define IDENTIFYING_RELATIONSHIP "--"
+!define NON_IDENTIFYING_RELATIONSHIP "-o-"
+
+!define INHERITANCE_ARROW_UP "^"
+
+skinparam {
+    shadowing false
+    defaultFontName Arial
+    defaultFontSize 14
+    arrowThickness 1
+    actorBorderColor black
+    actorBackgroundColor White
+}
+
+entity User {
+    * Id [PK]
+    ---
+    * Name
+    * PhoneNumber
+}
+
+entity Trainer {
+    * Id [PK]
+    ---
+    * Name
+    * PhoneNumber
+    * Description
+}
+
+entity MembershipType {
+    * Id [PK]
+    ---
+    * Name
+    * DurationInDays
+    * Price
+}
+
+entity Membership {
+    * UserId [PK] [FK: User.Id]
+    * MembershipTypeId [PK] [FK: MembershipType.Id]
+    ---
+    * DateOfPurchase
+    * DateOfExpiry
+}
+
+entity ExerciseCategory {
+    * Id [PK]
+    ---
+    * Name
+}
+
+entity Exercise {
+    * Id [PK]
+    ---
+    * Name
+    * Sets
+    * Repetitions
+    * Description
+    * ExerciseCategoryId [FK: ExerciseCategory.Id]
+}
+
+entity Workout {
+    * Id [PK]
+    ---
+    * NumOfExercises
+    * WorkoutDuration
+    * Description
+}
+
+entity WorkoutExercise {
+    * WorkoutId [PK] [FK: Workout.Id]
+    * ExerciseId [PK] [FK: Exercise.Id]
+    * ExerciseOrder [PK]
+}
+
+entity UserWorkout {
+    * UserId [PK] [FK: User.Id]
+    * WorkoutId [PK] [FK: Workout.Id]
+    ---
+    * Date
+}
+
+User ||--o{ Membership
+MembershipType ||--o{ Membership
+User ||--o{ UserWorkout
+Workout ||--o{ UserWorkout
+ExerciseCategory ||--o{ Exercise
+Exercise ||--o{ WorkoutExercise
+Workout ||--{ WorkoutExercise
+
+@enduml
