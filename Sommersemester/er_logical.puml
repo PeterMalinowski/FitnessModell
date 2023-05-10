@@ -1,106 +1,66 @@
-@startuml er_logical
+@startuml fitness
 
-!define TABLE_BORDER_STYLE solid
-!define TABLE_ROW_PADDING 5
-!define ENTITY_PADDING 20
+hide circle
+left to right direction
 
-!define PK_COLOR Orange
-!define FK_COLOR Blue
 
-!define CARDINALITY_ONE "*"
-!define CARDINALITY_MANY "**"
-
-!define NULL_OPTIONAL "[0..1]"
-!define NOT_NULL_REQUIRED "[1]"
-
-!define IDENTIFYING_RELATIONSHIP "--"
-!define NON_IDENTIFYING_RELATIONSHIP "-o-"
-
-!define INHERITANCE_ARROW_UP "^"
-
-skinparam {
-    shadowing false
-    defaultFontName Arial
-    defaultFontSize 14
-    arrowThickness 1
-    actorBorderColor black
-    actorBackgroundColor White
-}
-
-entity User {
-    * Id [PK]
+entity User{
+    *Id
     ---
-    * Name
-    * PhoneNumber
+    *Name
+    *PhoneNumber
+    *TrainerId <<FK>>
+    *Membership <<FK>>
 }
 
-entity Trainer {
-    * Id [PK]
+entity Workout{
+    *Id
     ---
-    * Name
-    * PhoneNumber
-    * Description
+    *NumOfExercises
+    *WorkoutDuration
+    *ExercisesId <<FK>>
+    *Description
 }
 
-entity MembershipType {
-    * Id [PK]
+entity Exercises{
+    *Id
     ---
-    * Name
-    * DurationInDays
-    * Price
+    *Name
+    *MuscleGroup
+    *Sets
+    *Repetitions
+    *Description
 }
 
-entity Membership {
-    * UserId [PK] [FK: User.Id]
-    * MembershipTypeId [PK] [FK: MembershipType.Id]
+entity Trainer{
+    *Id
     ---
-    * DateOfPurchase
-    * DateOfExpiry
+    *Name
+    *PhoneNumber
+    *Description
 }
 
-entity ExerciseCategory {
-    * Id [PK]
+entity Membership{
+    *UserId <<FK>>
     ---
-    * Name
+    *DateOfPurchase
+    *DateOfExpiry
+    *Price
 }
 
-entity Exercise {
-    * Id [PK]
+entity UserWorkout{
+    UserId <<FK>>
+    WorkoutId <<FK>>
     ---
-    * Name
-    * Sets
-    * Repetitions
-    * Description
-    * ExerciseCategoryId [FK: ExerciseCategory.Id]
+    *Date
 }
 
-entity Workout {
-    * Id [PK]
-    ---
-    * NumOfExercises
-    * WorkoutDuration
-    * Description
-}
 
-entity WorkoutExercise {
-    * WorkoutId [PK] [FK: Workout.Id]
-    * ExerciseId [PK] [FK: Exercise.Id]
-    * ExerciseOrder [PK]
-}
-
-entity UserWorkout {
-    * UserId [PK] [FK: User.Id]
-    * WorkoutId [PK] [FK: Workout.Id]
-    ---
-    * Date
-}
-
-User ||--o{ Membership
-MembershipType ||--o{ Membership
-User ||--o{ UserWorkout
-Workout ||--o{ UserWorkout
-ExerciseCategory ||--o{ Exercise
-Exercise ||--o{ WorkoutExercise
-Workout ||--{ WorkoutExercise
+Workout||---o{UserWorkout
+User ||---o{ UserWorkout
+Exercises ||---o{ Workout
+Trainer ||---o{ User
+Membership ||---|| User
 
 @enduml
+Footer
