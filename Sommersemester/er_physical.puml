@@ -1,64 +1,68 @@
 @startuml er_physical
 
-!define sqlserver
-!define PK(x) type int IDENTITY(x,1)
-!define FK(x) type int REFERENCES x(ID)
-!define DT(x) type x
-!define NN(x) not null
-!define C(x) CHECK(x)
-
-hide circle
-left to right direction
 
 entity User{
-    PK(1) *Id DT(int)
-    NN(Name) DT(nvarchar(100))
-    NN(PhoneNumber) DT(nvarchar(20))
-    FK(TrainerId) DT(int)
-    FK(MembershipId) DT(int)
+    *Id : INTEGER <<PK>>
+    ---
+    *Vorname : VARCHAR(50)
+    *Nachname : VARCHAR(50)
+    *PhoneNumber : VARCHAR(20)
+    *MembershipId : INTEGER <<FK>>
+    TrainerId : INTEGER <<FK>>
+    --constraints--
+    UNIQUE (PhoneNumber)
 }
 
 entity Workout{
-    PK(1) *Id DT(int)
-    NN(NumOfExercises) DT(int)
-    NN(WorkoutDuration) DT(time)
-    NN(Description) DT(nvarchar(100))
+    *Id : INTEGER <<PK>>
+    ---
+    *NumOfExercises : INTEGER
+    *WorkoutDuration : TIME
+    Description : VARCHAR(225)
 }
 
 entity Exercise{
-    PK(1) *Id DT(int)
-    NN(Name) DT(nvarchar(100))
-    NN(MuscleGroup) DT(nvarchar(50))
-    NN(Sets) DT(int)
-    NN(Repetitions) DT(int)
-    NN(Description) DT(nvarchar(100))
+    *Id : INTEGER <<PK>>
+    ---
+    *Name : VARCHAR(50)
+    *MuscleGroup : VARCHAR(50)
+    *Sets : INTEGER
+    *Repetitions : INTEGER
+    Description : VARCHAR(225)
+    --constraints--
+    CHECK (Sets > 0)
 }
 
 entity Trainer{
-    PK(1) *Id DT(int)
-    NN(Name) DT(nvarchar(100))
-    NN(PhoneNumber) DT(nvarchar(20))
-    NN(Description) DT(nvarchar(100))
+    *Id : INTEGER <<PK>>
+    ---
+    *Vorname : VARCHAR(50)
+    *Nachname : VARCHAR(50)
+    *PhoneNumber : VARCHAR(20)
+    Description : VARCHAR(225)
+    --constraints--
+    UNIQUE(PhoneNumber)
 }
 
 entity Membership{
-    PK(1) *Id DT(int)
-    NN(UserId) DT(int)
-    NN(DateOfPurchase) DT(date)
-    NN(DateOfExpiry) DT(date)
-    NN(Price) DT(decimal(10,2))
+    *Id : INTEGER <<PK>>
+    ---
+    *DateOfPurchase : DATE
+    *DateOfExpiry : DATE
+    *Price : decimal(10,2)
 }
 
 entity UserWorkout{
-    PK(1) FK(UserId) DT(int)
-    PK(2) FK(WorkoutId) DT(int)
-    NN(Date) DT(date)
+    *UserId : INTEGER <<FK>>
+    *WorkoutId : INTEGER <<FK>>
+    ---
+    *DateOfWorkout : DATE
 }
 
 User ||---o{ UserWorkout
 Workout ||---o{ UserWorkout
-Exercise ||---o{ Workout
-Trainer ||---o{ User
-Membership ||---|| User
+Exercise ||..o{ Workout
+Trainer ||..o{ User
+Membership ||..|| User
 
 @enduml
