@@ -27,7 +27,7 @@ CREATE TABLE Trainer (
     Id INT NOT NULL,
     Name NVARCHAR(100) NOT NULL,
     PhoneNumber NVARCHAR(20) NOT NULL,
-    Description NVARCHAR(100) NOT NULL,
+    Description NVARCHAR(100),
     PRIMARY KEY (Id)
 );
 
@@ -35,8 +35,8 @@ CREATE TABLE [User] (
     Id INT NOT NULL,
     Name NVARCHAR(100) NOT NULL,
     PhoneNumber NVARCHAR(20) NOT NULL,
+    MembershipId INT NOT NULL,
     TrainerId INT,
-    MembershipId INT,
     PRIMARY KEY (Id),
     FOREIGN KEY (TrainerId) REFERENCES Trainer(Id),
     FOREIGN KEY (MembershipId) REFERENCES Membership(Id)
@@ -48,7 +48,7 @@ CREATE TABLE Exercise (
     MuscleGroup NVARCHAR(50) NOT NULL,
     Sets INT NOT NULL,
     Repetitions INT NOT NULL,
-    Description NVARCHAR(100) NOT NULL,
+    Description NVARCHAR(100),
     PRIMARY KEY (Id)
 );
 
@@ -56,7 +56,7 @@ CREATE TABLE Workout (
     Id INT NOT NULL,
     NumOfExercises INT NOT NULL,
     WorkoutDuration TIME NOT NULL,
-    Description NVARCHAR(100) NOT NULL,
+    Description NVARCHAR(100),
     PRIMARY KEY (Id)
 );
 
