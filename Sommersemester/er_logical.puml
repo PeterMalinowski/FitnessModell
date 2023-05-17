@@ -1,47 +1,44 @@
 @startuml fitness
 
-hide circle
-left to right direction
-
 
 entity User{
-    *Id
+    *Id <<PK>>
     ---
     *Name
     *PhoneNumber
-    *TrainerId <<FK>>
-    *Membership <<FK>>
+    *MembershipId <<FK>>
+    TrainerId <<FK>>
 }
 
 entity Workout{
-    *Id
+    *Id <<PK>>
     ---
     *NumOfExercises
     *WorkoutDuration
     *ExercisesId <<FK>>
-    *Description
+    Description
 }
 
 entity Exercises{
-    *Id
+    *Id <<PK>>
     ---
     *Name
     *MuscleGroup
     *Sets
     *Repetitions
-    *Description
+    Description
 }
 
 entity Trainer{
-    *Id
+    *Id <<PK>>
     ---
     *Name
     *PhoneNumber
-    *Description
+    Description
 }
 
 entity Membership{
-    *UserId <<FK>>
+    *Id <<PK>>
     ---
     *DateOfPurchase
     *DateOfExpiry
@@ -49,8 +46,8 @@ entity Membership{
 }
 
 entity UserWorkout{
-    UserId <<FK>>
-    WorkoutId <<FK>>
+    *UserId <<FK>>
+    *WorkoutId <<FK>>
     ---
     *Date
 }
@@ -58,9 +55,9 @@ entity UserWorkout{
 
 Workout||---o{UserWorkout
 User ||---o{ UserWorkout
-Exercises ||---o{ Workout
-Trainer ||---o{ User
-Membership ||---|| User
+Exercises ||..o{ Workout
+Trainer ||..o{ User
+Membership ||..|| User
 
 @enduml
 Footer
