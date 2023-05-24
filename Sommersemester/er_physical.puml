@@ -9,7 +9,7 @@ entity User{
     *PhoneNumber : VARCHAR(20)
     *MembershipId : INTEGER <<FK>>
     TrainerId : INTEGER <<FK>>
-    --constraints--
+    --constraints-- 
     UNIQUE (PhoneNumber)
 }
 

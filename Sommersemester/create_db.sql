@@ -16,7 +16,7 @@ GO
 -- Create tables
 
 CREATE TABLE Membership (
-    Id INT NOT NULL,
+    Id INT NOT NULL, 
     DateOfPurchase DATE NOT NULL,
     DateOfExpiry DATE NOT NULL,
     Price DECIMAL(10, 2) NOT NULL,
