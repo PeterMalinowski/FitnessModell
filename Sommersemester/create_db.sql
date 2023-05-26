@@ -50,7 +50,7 @@ CREATE TABLE Exercise (
     Repetitions INT NOT NULL,
     OverExerciseId INT,
     Description NVARCHAR(100),
-    PRIMARY KEY (Id)
+    PRIMARY KEY (Id),
     FOREIGN KEY (OverExerciseId) REFERENCES Exercise(Id)
 );
 
