@@ -48,6 +48,7 @@ CREATE TABLE Exercise (
     MuscleGroup NVARCHAR(50) NOT NULL,
     Sets INT NOT NULL,
     Repetitions INT NOT NULL,
+    ExerciseAttributes VARCHAR(MAX) NOT NULL,
     OverExerciseId INT,
     Description NVARCHAR(100),
     PRIMARY KEY (Id),
