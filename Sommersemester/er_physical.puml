@@ -65,7 +65,7 @@ User ||---o{ UserWorkout
 Workout ||---o{ UserWorkout
 Exercise ||..o{ Workout
 Trainer ||..o{ User
-Membership ||..|| Userd
+Membership ||..|| User
 Exercise ||..o{ Exercise
 
 @enduml
