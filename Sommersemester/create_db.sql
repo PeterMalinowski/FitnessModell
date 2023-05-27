@@ -48,8 +48,11 @@ CREATE TABLE Exercise (
     MuscleGroup NVARCHAR(50) NOT NULL,
     Sets INT NOT NULL,
     Repetitions INT NOT NULL,
+    ExerciseAttributes VARCHAR(MAX) NOT NULL,
+    OverExerciseId INT,
     Description NVARCHAR(100),
-    PRIMARY KEY (Id)
+    PRIMARY KEY (Id),
+    FOREIGN KEY (OverExerciseId) REFERENCES Exercise(Id)
 );
 
 CREATE TABLE Workout (
@@ -68,4 +71,3 @@ CREATE TABLE UserWorkout (
     FOREIGN KEY (UserId) REFERENCES [User](Id),
     FOREIGN KEY (WorkoutId) REFERENCES Workout(Id)
 );
-

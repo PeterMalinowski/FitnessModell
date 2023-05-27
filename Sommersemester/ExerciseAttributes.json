@@ -1,0 +1,20 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://example.com/product.schema.json",
+    "title": "Addiontal attributes.",
+    "description": "Addiontal attributes for a Exercise.",
+    "type": "object",
+        "properties": {
+          "duration": {
+            "type": "number"
+          },
+          "dificulltyLevel": {
+            "type": "number"
+          },
+          "benefits": {
+            "type": "string"
+          }
+        },
+        "required": [ "duration", "dificulltyLevel", "benefits" ]
+      
+    }

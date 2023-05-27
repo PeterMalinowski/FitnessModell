@@ -28,6 +28,8 @@ entity Exercise{
     *MuscleGroup : VARCHAR(50)
     *Sets : INTEGER
     *Repetitions : INTEGER
+    *ExcerciseAttributes: VARCHAR(MAX)
+    OverExerciseId : INTEGER <<FK>>
     Description : VARCHAR(225)
     --constraints--
     CHECK (Sets > 0)
@@ -64,5 +66,6 @@ Workout ||---o{ UserWorkout
 Exercise ||..o{ Workout
 Trainer ||..o{ User
 Membership ||..|| User
+Exercise ||..o{ Exercise
 
 @enduml
